@@ -18,6 +18,14 @@
 ※커밋 없이 진행하려고 했었는데, 중간중간 갈아 엎는 부분이 많아서 결과만 남을까봐.. 과정마다 커밋하기로 하였음.
 ※12월 부터 진행했던 모든 공부 및 개발 과정을 여기 작성
 
+- npx create-react-app 을 사용하여 새로 react 폴더를 생성하였음.
+>실행하기 위해 shell에
+>```
+>cd my-app
+>npm start
+>```
+>작성 후 작업
+
 ## 공부내용
 
 ### State
@@ -244,3 +252,23 @@ export default function App() {
 ```
 </details>
 
+<details>
+  <summary> 🐥 3rd commit (23.1.7) </summary>
+  
+## 참고사항
+  
+※ npx create-react-app 을 사용하기 위해 이전 파일을 전부 삭제 후, my-app 폴더에 생성하였다.<br>
+
+- 앞으로 react를 실행시키기 위해 Shell 창에
+```
+cd my-app
+npm start
+```
+- 를 작성해준다.
+  - 아마 추후에 자동으로 실행되게 만들것이다.
+
+## 공부내용
+
+없음
+
+</detalis>
