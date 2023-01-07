@@ -272,7 +272,7 @@ npm start
 
 없음
 
-</detalis>
+</details>
 
 <details>
   <summary> 🐥 4th commit (23.1.7) </summary>
