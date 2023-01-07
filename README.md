@@ -251,6 +251,7 @@ export default function App() {
 }
 ```
 </details>
+</details>
 
 <details>
   <summary> 🐥 3rd commit (23.1.7) </summary>
