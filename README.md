@@ -177,6 +177,7 @@ export default function App() {
 }
 ```
 </details>
+</details>
 
 <details>
   <summary> 🐥 2nd commit (23.1.7) </summary>
@@ -241,7 +242,5 @@ export default function App() {
   );
 }
 ```
-</details>
-
 </details>
 
