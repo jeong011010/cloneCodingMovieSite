@@ -178,5 +178,70 @@ export default function App() {
 ```
 </details>
 
+<details>
+  <summary> 🐥 2nd commit (23.1.7) </summary>
+  
+## 참고사항
+  
+※없음
+
+## 공부내용
+
+### Props
+Props : function에 각각 전해줄 수 있는 인자<br>
+C 함수의 매개변수와 같은 느낌이다.<br><br>
+
+하나의 function을 복붙해서 수정하여 사용하면 비효율적이기 때문에, function 하나만 정의 해둔 뒤 바뀌는 값만 props로 넘겨주고 호출하는 형식으로 사용한다. <br><br>
+```
+function f({propsName}) {
+  return <button>{propsName}</button>
+}
+```
+위 양식으로 props를 받을 수 있다.<br>
+```
+<f propsName="버튼"/>
+```
+위 양식으로 props를 전달하여 함수를 호출할 수 있다.
+
+## 예제 실습
+
+<details>
+  <summary>🍇 app.jsx 코드</summary>
+ 
+```js
+import { useState } from 'react';
+import './App.css'
+
+
+function Btn({ text, onClick }) {
+  return <button
+    onClick={onClick}
+    style={{
+      backgroundColor: "tomato",
+      color: "white",
+      padding: "10px 20px",
+      border: 0,
+      borderRadius: 10.
+    }}>{text}</button>
+}
+
+function ConfirmBtn() {
+  return <button>Confirm</button>
+}
+
+export default function App() {
+
+  const [value, setValue] = useState("");
+  const changeValue = () => setValue("Revert Changes");
+  return (
+    <div>
+      <Btn text={value} onClick={changeValue} />
+      <Btn text="Continue" />
+    </div>
+  );
+}
+```
+</details>
+
 </details>
 
