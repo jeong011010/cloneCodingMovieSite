@@ -273,3 +273,95 @@ npm start
 없음
 
 </detalis>
+
+<details>
+  <summary> 🐥 4th commit (23.1.7) </summary>
+  
+## 참고사항
+  
+※ <br>
+
+## 공부내용
+
+- js 파일을 만들어 prop 기능을 사용해봤다.
+- 해당 과정에서 CSS를 prop 할 때 **CSS Module** 이라는 것을 사용했다.
+
+*CSS Module* 이란 
+- CSS 파일 확장자명을 "module.css"로 작성하며
+- 리액트 컴포넌트 파일에서 해당 CSS를 불러올 때 클래스 이름이 전부 고유해진다.
+- 클래스 이름에 대하여 고유한 이름들이 만들어져 실수로 CSS 클래스명이 중복될 일이 없다.
+<br>
+
+```js
+import styles from "./Button.module.css";
+
+function Button() {
+  return <button className={styles.Button}>{buttonName}</button>
+}
+```
+
+- 위와 같이 import로 불러온 styles 객체 안의 값을 참조하여 불러온다.
+
+- **button.Button_btn__F4YlC 와 같이 랜덤한 값으로 styles 이름이 생성되어 중복될 일이 전혀 없다.**
+
+## 예제 실습
+
+<details>
+  <summary>🍇 App.js 코드</summary>
+ 
+```js
+import Button from "./Button"
+import styles from "./App.module.css"
+
+function App() {
+  return (
+    <div>
+      <h1 className={styles.title}>Welcome back!</h1>
+      <Button text="b1"/>
+    </div>
+  );
+}
+
+export default App;
+
+```
+</details>
+
+<details>
+  <summary>🍇 App.module.css 코드</summary>
+ 
+```css
+.title{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+}
+
+```
+</details>
+
+</detalis>
+
+<!--
+<details>
+  <summary> 🐥 th commit (23..) </summary>
+  
+## 참고사항
+  
+※ <br>
+
+## 공부내용
+
+※ <br>
+
+## 예제 실습
+
+<details>
+  <summary>🍇  코드</summary>
+ 
+```js
+
+```
+</details>
+
+</detalis>
+-->
