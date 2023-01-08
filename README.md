@@ -452,7 +452,7 @@ export default App;
 ```
 </details>
 
-</detalis>
+</details>
 
 <!--
 <details>
@@ -476,5 +476,5 @@ export default App;
 ```
 </details>
 
-</detalis>
+</details>
 -->
