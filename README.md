@@ -341,6 +341,119 @@ export default App;
 
 </detalis>
 
+<details>
+  <summary> 🐥 5th commit (23.1.8) </summary>
+  
+## 참고사항
+  
+<br>
+
+## 공부내용
+
+**useEffect** <br>
+- useEffect: 컴포넌트가 렌더링 될 때마다 특정 작업을 실행할 수 있도록 하는 Hook
+<br>
+기본 형태
+```js
+useEffect(function,deps)
+```
+<br>
+
+```js
+useEffect(function)
+```
+리렌더링 될 때 마다 function 실행
+<br>
+```js
+useEffect(function,[])
+```
+deps에 []를 넣을 시, 가장 처음 렌더링 될 때 한번만 실행
+<br>
+```js 
+useEffect(function,[name])
+```
+name 값이 업데이트 될 때 실행<br>
+*배열 안에 ','를 통해 여러개의 값을 넣을 수 있음* <br><br>
+
+---------
+
+**clean up** <br>
+- clean up: useEffect를 통해 생성된 컴포넌트가 파괴될 때 실행되는 함수
+<br>
+useEffect 속 function에서 **return** 을 통해 컴포넌트를 **destroy** 시킬 수 있다.
+<br>
+
+## 예제 실습
+
+<details>
+  <summary>🍇 UseEffect - App.js 코드</summary>
+ 
+```js
+import {useState, useEffect} from "react";
+
+function App() {
+  const [counter,SetValue] = useState(0);
+  const [keyword, setKeyword] = useState("");
+  const onClick = () => SetValue((prev) => prev+1);
+  const onChange = (e) => setKeyword(e.target.value);
+  useEffect(()=>{console.log("I run only once.")},[]);
+  useEffect(()=>{console.log("I run when 'keyword' changes.")},[keyword]);
+  useEffect(()=>{console.log("I run when 'counter' changes.")}, [counter]);
+  useEffect(()=>{console.log("I run when keyword & counter change")},[keyword, counter]);
+  
+  return (
+    <div>
+      <input
+        value={keyword}
+        onChange={onChange}
+        type="text"
+        placeholder="Search"/>
+      <h1>{counter}</h1>
+      <button onClick={onClick}>Click me</button>
+    </div>
+  );
+}
+
+export default App;
+
+```
+</details>
+
+<details>
+  <summary>🍇 cleanUp - App.js코드</summary>
+ 
+```js
+import {useState, useEffect} from "react";
+
+function Hello() {
+  useEffect(()=> {
+    console.log("created :)");
+    return () => console.log("destroyed :(");
+  }, []);
+  return <h1>Hello</h1>;
+}
+
+function App() {
+  const [showing, setShowing] = useState(false);
+  const onClick = () => setShowing((prev) => !prev);
+  
+  
+  return (
+    <div>
+      
+      {showing?<Hello/>:null}
+      <button onClick={onClick}>{showing?"Hide":"Show"}</button>
+    </div>
+  );
+}
+
+export default App;
+
+```
+</details>
+
+</detalis>
+
 <!--
 <details>
   <summary> 🐥 th commit (23..) </summary>
