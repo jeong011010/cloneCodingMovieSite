@@ -353,7 +353,8 @@ export default App;
 **useEffect** <br>
 - useEffect: 컴포넌트가 렌더링 될 때마다 특정 작업을 실행할 수 있도록 하는 Hook
 <br>
-기본 형태
+기본 형태<br>
+
 ```js
 useEffect(function,deps)
 ```
@@ -443,6 +444,80 @@ function App() {
       
       {showing?<Hello/>:null}
       <button onClick={onClick}>{showing?"Hide":"Show"}</button>
+    </div>
+  );
+}
+
+export default App;
+
+```
+</details>
+</details>
+
+
+<details>
+  <summary> 🐥 6th commit (23.1.8) </summary>
+  
+## 참고사항
+  
+<br>
+
+## 공부내용
+
+### 📝 ToDo list 제작
+
+- toDo 입력을 위한 toDo useState
+- toDo 들을 저장하기 위한 toDos useState
+- **toDos 에 이전 값에 현재 toDo 값을 더해주는 함수**
+  - ```setToDos((currentArray) => [toDo, ...currentArray]);```
+  - ...currentArray => 이전 ToDos의 값들
+
+<br>
+
+**map** <br>
+value와 index를 인자로 받아 자동으로 for문을 돌려 값을 빼도록 해주는 함수
+```js
+[].map((item, index)=> {function})
+```
+- item : 배열 값 이름
+- index : 배열안의 인덱스
+
+## 예제 실습
+
+<details>
+  <summary>🍇 App.js 코드</summary>
+ 
+```js
+import {useState, useEffect} from "react";
+
+function App() {
+  const [toDo, setToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
+  const onChange = (e) => setToDo(e.target.value);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (toDo === ""){
+      return;
+    }
+    setToDos((currentArray) => [toDo, ...currentArray]); // toDos의 값을 가져 오기 위한 인수 (currentArray), ...currentArray = toDos의 값들
+    setToDo("");
+  }
+  return (
+    <div>
+      <h1>My To Dos ({toDos.length})</h1>
+      <form>
+        <input
+          onChange={onChange}
+          value={toDo}
+          type="text"
+          placeholder="Write your to do..."
+          />
+        <button onClick={onSubmit}>Add To Do</button>
+      </form>
+      <hr />
+      <ul>
+        {toDos.map((item, index)=>(<li key={index}>{item}</li>))}
+      </ul>
     </div>
   );
 }
