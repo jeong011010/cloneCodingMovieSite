@@ -339,7 +339,7 @@ export default App;
 ```
 </details>
 
-</detalis>
+</details>
 
 <details>
   <summary> 🐥 5th commit (23.1.8) </summary>
