@@ -529,6 +529,61 @@ export default App;
 
 </details>
 
+<details>
+  <summary> 🐥 7th commit (23.1.9) </summary>
+  
+## 참고사항
+  
+※ 외출 나갔다와서 졸려서 얼마 못함<br>
+
+- fetch 함수가 'TypeError: Failed to fetch' 에러가 나서 실습 결과를 못본 상황이긴 함.
+- 아마 replit 쪽에서 fetch가 에러난것 같긴 한데 잘 모르겠다~
+
+## 공부내용
+
+💰 Coin Tracker 제작<br>
+
+## 예제 실습
+
+<details>
+  <summary>🍇 App.js 코드</summary>
+ 
+```js
+import {useState, useEffect} from "react";
+
+function App() {
+  const [loading, setLoading]=useState(true);
+  const [coins, setCoins] = useState([]);
+  useEffect(()=>{
+    fetch("https://api.coinpaprika.com/v1/tickers")
+    .then((response) => response.json())
+    .then((json)=>{
+      setCoins(json);
+      setLoading(false);
+    });
+  }, []);
+  return(
+    <div>
+      <h1>The Coins! ({coins.length})</h1>
+      {loading?<strong>Loading...</strong>:null}
+      <select>
+        {coins.map((coin)=> (
+          <option>
+            {coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+export default App;
+
+```
+</details>
+
+</details>
+
 <!--
 <details>
   <summary> 🐥 th commit (23..) </summary>
