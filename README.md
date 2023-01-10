@@ -584,6 +584,101 @@ export default App;
 
 </details>
 
+<details>
+  <summary> 🐥 8th commit (23.1.10) </summary>
+  
+## 참고사항
+  
+※ 마지막에 갑자기 replit이 장고가 났는지 webview가 안나와서 잘 되는지 확인은 못했는데 아마 잘 될거임 ㅋㅋㅋ<br>
+
+## 공부내용
+
+**async, await** <br>
+를 배웠지만 해당 내용을 이해하기 위해 필요한 개념이 있었다.<br><br>
+
+---
+
+### 비동기 작업
+해당 [velog](https://springfall.cc/post/7)의 도움을 받아 쉽게 이해할 수 있었다. (꾸벅)<br><br>
+비동기 작업이란 동기 작업의 반대되는 것으로,<br>
+각각의 비동기 작업들이 같은 시간에 시작하여 다른 시간에 끝나는 경우를 뜻한다고 볼 수 있다.<br>
+즉, **동시에 여러작업을 수행할 수 있으나, 무엇이 먼저 완료될 지 보장할 수 없다**는 특징을 가지고 있다.<br><br>
+
+**promise와 then**<br>
+promise란 비동기 작업을 쉽게 관리할 수 있는 함수이다.<br>
+```
+const promise = new Promise((resolve, reject) => {});
+```
+위와 같이 작성하여 promise 객체를 생성한다.<br>
+- **resolve** 호출 시 비동기 작업이 **성공**했다는 뜻.
+- **reject** 호출 시 비동기 작업이 **실패**했다는 뜻.
+<br><br>
+**then** 메소드<br>
+  : 해당 Promise가 성공했을 때의 동작을 지정한다.<br>
+  **catch** 메소드<br>
+  : 해당 Promise가 실패했을 때의 동작을 지정한다.<br><br>
+
+그래서 이번 실습에서 api를 Loading 후 가져오는 작업이 비동기 작업에 해당하므로, then을 사용하였다.<br><br>
+
+---
+
+다시 돌아와서, <br>
+**async와 await**<br>
+
+async란
+- async는 promise 함수를 더욱 간단하게 줄여 사용할 수 있는 함수이다.
+- 함수에 async 키워드를 붙이고 선언하면 promise 함수처럼 동작한다는 놀라운 사실!!!
+- async 함수의 리턴 값은 무조건 Promise다.
+<br>
+await란
+- Promise가 성공하든 실패하든 끝날 때 까지 기다린 뒤 실행하는 함수이다.
+- async 함수 내부에서만 사용할 수 있다.
+
+
+## 예제 실습
+
+<details>
+  <summary>🍇 App.js 코드</summary>
+ 
+```js
+import {useState, useEffect} from "react"
+
+function App(){
+  const[loading, setLoading] = useState(true);
+  const[movies,setMovies]=useState([]);
+  const getMovies = async ()=>{
+    const json = await(await fetch(
+      `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year` 
+    )).json();
+    setMovies(json.data.movies);
+    setLoading(false);
+  }
+  useEffect(()=>{
+    getMovies();
+  },[]);
+  console.log(movies);
+  return(
+    <div>
+      {loading ? <h1>Loading...</h1>: <div>{movies.map(movie => <div key={movie.id}>
+        <img src={movie.medium_cover_image}
+        <h2>{movie.title}</h2>
+        <p>{movie.summary}</p>
+        <ul>
+          {movie.genres.map((g)=>(
+          <li key={g}>{g}</li>
+          ))}
+        </ul>
+      </div>)}</div>}
+    </div>
+  );
+}
+
+export default App;
+```
+</details>
+
+</details>
+
 <!--
 <details>
   <summary> 🐥 th commit (23..) </summary>
