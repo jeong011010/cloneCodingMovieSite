@@ -679,6 +679,201 @@ export default App;
 
 </details>
 
+<details>
+  <summary> 🐥 9th commit (23.1.11) </summary>
+  
+## 참고사항
+  
+React Router 설치 커맨드<br>
+```
+npm i react-router-dom@5.3.0
+```
+
+<br>
+
+Link 사용 후 작동이 안되서 찾아본 결과 [해당 페이지](https://stackoverflow.com/questions/53490431/react-router-dom-not-rendering-components-on-route-change)에서 답을 찾을 수 있었음<br>
+Router를 사용하게 될 때, index.js 에서
+```js
+<React.StrictMode>
+  <App />
+</React.StrictMode>
+```
+부분을
+```js
+<BrowserRouter>
+  <App/>
+</BrowserRouter>
+```
+로 바꿔줘야 한다.<br>
+
+## 공부내용
+
+### Routes
+**Routing**<br>
+
+- 페이지 이동 기능을 사용할 수 있게 해준다!
+- 사용자가 요청한 URL에 따라 해당 URL에 맞는 페이지를 보여주는 기능
+<br>
+
+**Router**<br>
+
+- 사용자가 입력한 주소를 감지하는 역할
+<br>
+- BrowserRouter : url에 / 뒤에 추가 주소 입력
+- HashRouter : url에 해쉬(#)이 붙는다
+
+<br>
+React-Router-dom 사용 예시<br>
+
+```js
+<Router>
+  <Switch> 한번에 하나의 Route만 렌더링 하는 역할
+    <Route path=""> URL에 들어갈 주소 ex)"/movie"
+      <component1 /> 이동할 컴포넌트
+    </Route>
+    <Route path="">
+      <component2 />
+    </Route>
+  </Switch>
+</Router>
+```
+
+
+## 예제 실습
+
+<details>
+  <summary>🍇 App.js 코드</summary>
+ 
+```js
+import {useState, useEffect} from "react"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom"
+import Home from "./routes/Home"
+import Detail from "./routes/Detail"
+
+function App(){
+  return (
+    <Router>
+      <Switch>
+        <Route path="/hello">
+          <h1>Hello</h1>
+        </Route>
+        <Route path="/movie">
+          <Detail />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+  );
+}
+
+export default App;
+```
+</details>
+
+<details>
+  <summary>🍇 index.js 코드</summary>
+ 
+```js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+//import "./styles.css"
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>
+);
+
+
+```
+</details>
+
+<details>
+  <summary>🍇 Home.js 코드</summary>
+ 
+```js
+import {useState, useEffect} from "react"
+import Movie from "../components/Movie";
+
+function Home(){
+  const[loading, setLoading] = useState(true);
+  const[movies,setMovies]=useState([]);
+  const getMovies = async ()=>{
+    const json = await(await fetch(
+      `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year` 
+    )).json();
+    setMovies(json.data.movies);
+    setLoading(false);
+  }
+  useEffect(()=>{
+    getMovies();
+  },[]);
+  console.log(movies);
+  return(
+    <div>
+      {loading ? <h1>Loading...</h1>: <div>
+        {movies.map((movie) => 
+          <Movie
+          key={movie.id}
+            coverImg={movie.medium_cover_image} 
+            title={movie.title} 
+            summary={movie.summary} 
+            genres={movie.genres}/>)}
+      </div>}
+    </div>
+  );
+}
+
+export default Home;
+```
+</details>
+
+<details>
+  <summary>🍇 Movie.js 코드</summary>
+ 
+```js
+import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+
+function Movie({coverImg, title, summary, genres}){
+  return (
+    <div>
+      <img src={coverImg} alt={title}/>
+      <h2>
+        <Link to="/movie">{title}</Link>
+      </h2>
+      <p>{summary===""?"none summary":summary}</p>
+      <ul>
+        {genres.map((g)=>(
+        <li key={g}>{g}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+Movie.propTypes= {
+  coverImg: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+}
+
+export default Movie;
+```
+</details>
+
+</details>
+
 <!--
 <details>
   <summary> 🐥 th commit (23..) </summary>
