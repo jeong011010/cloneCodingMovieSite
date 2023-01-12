@@ -874,6 +874,85 @@ export default Movie;
 
 </details>
 
+<details>
+  <summary> 🐥 10th commit (23.1.12) </summary>
+  
+## 참고사항
+  
+<br>
+
+## 공부내용
+
+### useParams
+
+- 라우터 파라미터 정보(/:id) 를 가져오는 함수
+- URL 값이 바뀔 때 바뀐 부분을 value로 가져올 수 있다.
+- 이를 통해 URL id 값을 가져올 수 있다.
+
+<br>
+하여 기본적인 영화 사이트를 완성하였다.<br><br>
+
+**publishing** <br>
+
+git에서 지원하는 gh-pages를 통해 내가 만든 사이트를 배포할 수 있다.<br>
+너무 길어서 자세한 과정은 생략한다.<br>
+궁금하다면 [해당 강의](https://nomadcoders.co/react-for-beginners/lectures/3293)를 시청하도록<br><br>
+[https://jeong011010.github.io/cloneCodingMovieSite](https://jeong011010.github.io/cloneCodingMovieSite)에 들어가면 나의 작품을 볼 수 있을 것이다.
+
+## 예제 실습
+
+<details>
+  <summary>🍇 Detail.js 코드</summary>
+ 
+```js
+import {useParams} from "react-router-dom"
+import {useEffect, useState} from "react"
+
+function Detail(){
+  const [movie, setMovie] = useState();
+  const [loading, setLoading] = useState(true);
+  const {id} = useParams();
+  const getMovie = async () => {
+    const json = await (await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)).json();
+    setMovie(json.data.movie);
+    setLoading(false);
+  }
+  console.log(movie);
+  
+  useEffect(()=>{
+    getMovie();
+  },[]);
+  return (
+    <div>
+      {loading ? <h1>Loading...</h1>:
+        <div>
+          <h1>{movie.title_long}</h1>
+          <img src={movie.large_cover_image} alt={movie.title}/>
+          <details>
+            <summary>genres</summary>
+            <ul>
+              {movie.genres.map((g)=>(
+              <li key={g}>{g}</li>
+              ))}
+            </ul>
+          </details>
+          <details>
+            <summary>summary</summary>
+            <p>{movie.description_full}</p>
+          </details>
+          <p>rating : {movie.rating}</p>
+          <a href={movie.url}>Movie Link</a>
+        </div>
+      }
+    </div>  
+  )
+}
+export default Detail;
+```
+</details>
+
+</details>
+
 <!--
 <details>
   <summary> 🐥 th commit (23..) </summary>
