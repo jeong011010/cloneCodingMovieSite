@@ -1,5 +1,6 @@
 # 💻 React 를 사용하여 영화사이트 클론코딩
-([nomadcoders - ReactJS로 영화 웹 서비스 만들기](https://nomadcoders.co/react-for-beginners/lectures)) 를 수강중
+([nomadcoders - ReactJS로 영화 웹 서비스 만들기](https://nomadcoders.co/react-for-beginners/lectures)) 를 수강중<br>
+[https://jeong011010.github.io/cloneCodingMovieSite](https://jeong011010.github.io/cloneCodingMovieSite) <- 배포 사이트<br>
 
 ## 🌴 목표 및 세부사항
 > - 군대 안에서 진행하는 두번째 course 강의. <br>
@@ -25,6 +26,10 @@
 >npm start
 >```
 >작성 후 작업
+
+<!--token:
+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
+-->
 
 ## 공부내용
 
@@ -948,6 +953,147 @@ function Detail(){
   )
 }
 export default Detail;
+```
+</details>
+
+</details>
+
+<details>
+  <summary> 🐥 11th commit (23.1.14) </summary>
+  
+## 참고사항
+  
+그제 github token 문제로 실패한 publish를 오늘 해결하였다. <br>
+```
+password for 'https://github.com':
+```
+라고 나오는데, 뒤에 입력해도 아무 반응이 없길래 replit 문제인줄 알았는데<br>
+원래 입력해도 아무 반응이 없고 그냥 붙여넣기 후 enter 입력하면 되는거였다.<br><br>
+
+css 파일을 받아와 적용시켜봤다.<br>
+아직 css쪽은 많이 어려운데 공부좀 해서 내 디자인 새로 만들어볼 생각임<br>
+
+
+## 공부내용
+
+※없음 <br>
+
+## 예제 실습
+
+<details>
+  <summary>🍇 Movie.module.css 코드</summary>
+ 
+```css
+.movie {
+  background-color: white;
+  margin-bottom: 70px;
+  font-weight: 300;
+  padding: 20px;
+  border-radius: 5px;
+  color: #adaeb9;
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) 2fr;
+  grid-gap: 20px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+.movie__img {
+  position: relative;
+  top: -50px;
+  max-width: 150px;
+  width: 100%;
+  margin-right: 30px;
+  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+    0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+}
+
+.movie__title,
+.movie__year {
+  margin: 0;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.movie__title a {
+  margin-bottom: 5px;
+  font-size: 24px;
+  color: #2c2c2c;
+  text-decoration: none;
+}
+
+.movie__genres {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px 0px;
+}
+
+.movie__genres li,
+.movie__year {
+  margin-right: 10px;
+  font-size: 14px;
+}
+```
+</details>
+
+<details>
+  <summary>🍇 Home.module.css 코드</summary>
+ 
+```css
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  grid-gap: 100px;
+  padding: 50px;
+  width: 80%;
+  padding-top: 70px;
+}
+
+@media screen and (max-width: 1090px) {
+  .movies {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+}
+```
+</details>
+
+<details>
+  <summary>🍇 styles.css 코드</summary>
+ 
+```css
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #eff3f7;
+  height: 100%;
+}
 ```
 </details>
 

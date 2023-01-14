@@ -34,7 +34,7 @@ function Detail(){
             <p>{movie.description_full}</p>
           </details>
           <p>rating : {movie.rating}</p>
-          <a href={movie.url}>Movie Link</a>
+          <a href={movie.url} target='_blank'>Movie Link</a>
         </div>
       }
     </div>  
