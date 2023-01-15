@@ -1,6 +1,7 @@
 # 💻 React 를 사용하여 영화사이트 클론코딩
-([nomadcoders - ReactJS로 영화 웹 서비스 만들기](https://nomadcoders.co/react-for-beginners/lectures)) 를 수강중<br>
-[https://jeong011010.github.io/cloneCodingMovieSite](https://jeong011010.github.io/cloneCodingMovieSite) <- 배포 사이트<br>
+([nomadcoders - ReactJS로 영화 웹 서비스 만들기](https://nomadcoders.co/react-for-beginners/lectures)) 를 수강 완료<br>
+[https://jeong011010.github.io/cloneCodingMovieSite](https://jeong011010.github.io/cloneCodingMovieSite) <- 배포 사이트<br><br>
+*2023.1.14 해당 강의 마무리.*
 
 ## 🌴 목표 및 세부사항
 > - 군대 안에서 진행하는 두번째 course 강의. <br>
@@ -1098,6 +1099,22 @@ body {
 </details>
 
 </details>
+
+<details>
+  <summary> 🐥 12th commit (23.1.15) </summary>
+  
+## 참고사항
+  
+※Chapter 7 까지 끝낸 이후, 2019년 업데이트 된 React로 같은 내용을 다시 공부하는 것이라, 해당 강의는 여기까지만 공부하기로 함.<br>
+아마 다음 공부는 이번에 부족하다고 느꼈던 css 공부를 할 것 같음.<br>
+
+## 공부내용
+
+**breaking change**<br>
+
+- 사용하던 언어 및 tool이 업데이트 되었을 때, 예전 코드를 사용하면 에러가 나는 것.
+- **React에서는 breaking change가 일어나지 않는다.**
+- 예전 코드에 기반하여 업데이트를 하였기 때문에 이전 코드를 깨지 않고 새로운 기능을 업데이트하고 추가만 했기 때문.
 
 <!--
 <details>
