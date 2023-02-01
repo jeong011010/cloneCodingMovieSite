@@ -9,6 +9,16 @@
 > - [replit](https://replit.com/@jeong011010/cloneCodingMovieSite#src)(웹 통합개발환경)을 사용하여 코딩중 <br>
 >   - ❗용량이 커지면 저장 및 git이 작동하지 않을 수 있음.<br>
 
+<br><br><br>
+!!! replit에 react 구축 !!!<br>
+```
+npm uninstall -g create-react-app (리액트 앱 제거)
+npm install -g create-react-app (리액트 앱 재설치)
+npx create-react-app app-name (리액트 앱 실행)
+```
+위 절차를 거치지 않으면 계속해서 enoent err no -2가 발생함.<br>
+굉장히 골머리 썩힌다.<br>
+해당 절차 이후, npx create-react-app my-app 실행<br><br>
 
 # 진행상황
 
